@@ -1,10 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { v4 as uuidv4 } from 'uuid';
-
 import { addYearCategory } from '../actions/actionCreator';
-
 import CategoryCard from './CategoryCard';
 
 function TimeBlock(props) {
@@ -51,7 +48,7 @@ function TimeBlock(props) {
   return (
     <div className="TimeBlock">
         <h1>Time Block</h1>
-        <p>And my uuid is: {props.uuid}</p>
+        <p>And my uuid is: {props.yearUuid}</p>
         {displayTimeCategories()}
         <button onClick={() => addCategoryCard()}>Add Category Card</button>
     </div>

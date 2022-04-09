@@ -2,7 +2,6 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import TimeBlock from './components/TimeBlock';
 import { addYear } from './actions/actionCreator';
-
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
   
   //DISPATCH
   const dispatch = useDispatch();
-  
+
   //SELECTOR
   const yearBlocks = useSelector((state) => {
     const years = state.years;

@@ -13,3 +13,10 @@ export const addYearCategory = (payload) => {
         item: payload
     };
 };
+
+export const addYearCategoryItem = (payload) => {
+    return {
+        type: "ADD_YEAR_CATEGORY_ITEM", 
+        item: payload
+    };
+};
