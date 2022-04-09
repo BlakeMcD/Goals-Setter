@@ -7,6 +7,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
+  
+  //DISPATCH
+  const dispatch = useDispatch();
+  
   //SELECTOR
   const yearBlocks = useSelector((state) => {
     const years = state.years;
@@ -16,9 +20,6 @@ function App() {
     console.log("yearsData:", years)
     return years
 })
-
-  //DISPATCH
-  const dispatch = useDispatch();
 
   //FUNCTIONS
   const addTimeBlock = () => {
@@ -33,7 +34,7 @@ function App() {
     let allItems = [];
     for (let i = 0; i < yearBlocks.length; i++) {
       allItems.push(
-        <TimeBlock uuid={yearBlocks[i].uuid}/>
+        <TimeBlock key={i} yearUuid={yearBlocks[i].uuid}/>
       )
     }
     return allItems;

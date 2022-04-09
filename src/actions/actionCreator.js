@@ -6,3 +6,10 @@ export const addYear = (payload) => {
         item: payload
     };
 };
+
+export const addYearCategory = (payload) => {
+    return {
+        type: "ADD_YEAR_CATEGORY", 
+        item: payload
+    };
+};
