@@ -11,7 +11,7 @@ function CategoryCard(props) {
     //SELECTOR
     const CategoryItems = useSelector((state) => {
         const findYear = state.years.find((year) => year.uuid === props.yearUuid);
-        console.log("FINDYEAR:", findYear)
+        // console.log("FINDYEAR:", findYear)
         if (findYear) {
             const findCategory = findYear.categories.find((category) => category.uuid = props.uuid);
             if (findCategory) {
@@ -23,8 +23,9 @@ function CategoryCard(props) {
 
     //FUNCTIONS
     const addCategoryItem = () => {
-        console.log("add Category Item click registered")
-        // console.log("addCategoryCard dispath code block")
+        // console.log("add Category Item click registered")
+        // console.log("yearUuid:", props.yearUuid);
+        // console.log("categoryUuid:", props.uuid);
         dispatch(addYearCategoryItem({
             yearUuid: props.yearUuid,
             categoryUuid: props.uuid,
@@ -38,7 +39,7 @@ function CategoryCard(props) {
         <p>yearUuid: {props.yearUuid}</p>
         <p>selfUuid: {props.uuid}</p>
         <h3>ITEMS</h3>
-        {/* <button onClick={() => addCategoryItem()}>Add Category Item</button> */}
+        <button onClick={() => addCategoryItem()}>Add Category Item</button>
     </div>
   )
 }

@@ -5,46 +5,45 @@ const yearReducer = (state = [], action) => {
             return [...state, action.item];
 
         case 'ADD_YEAR_CATEGORY':
-            console.log("AddYearCategory Action:", action.item) 
+            console.log("1 DISPATCH RECEIVED")
+            console.log("2 yearUuid:", action.item.yearUuid)
+            console.log("3 uuid:", action.item.uuid)
+            console.log("4 category:", action.item.category)
             return state.map(obj => {
-                if (obj.uuid  === action.item.yearUuid) {  //find the right year
-
-                    console.log("...obj.categories before if:", ...obj.categories)
+                console.log("5 the object that is mapped:", obj)
+                console.log("6 ...obj.categories:", [...obj.categories])
+                if (obj.uuid === action.item.yearUuid) {  //find the right year
 
                     return {
-                        uuid: obj.uuid, 
-                        year: obj.year,
-                        categories: [...obj.categories, {uuid: action.item.uuid, category: action.item.category, items: []}]
-                    }
+                        ...obj,
+                        categories: [
+                            ...obj.categories, 
+                            action.item
+                        ]
+                    };
                 }
                 return obj;
             })
         
         case 'ADD_YEAR_CATEGORY_ITEM': 
-        console.log("AddYearCategoryItem Action:", action.item)
         return state.map(obj => {
-            if (obj.uuid === action.item.yearUuid) {  //find the right year
-                console.log("line 31 ran")
-                return {
-                    uuid: obj.uuid, 
-                    year: obj.year, 
-                    categories: obj.categories.map((cat) => {  //find the right category
-                        console.log("cat.uuid:", cat.uuid);
-                        console.log("action.item.categoryUuid:", action.item.categoryUuid);
-                        if (cat.uuid === action.item.categoryUuid) {
-                            console.log("line 39 ran")
-                            return {
-                                yearUuid: cat.yearUuid, 
-                                uuid: cat.uuid, 
-                                category: cat.category,
-                                items: [...cat.items, {text: "did this work?", uuid: action.item.uuid}]
-                            }
-                        }
-                        console.log("line 47 ran")
-                        return cat
-                    })
-                }
-            }
+            // if (obj.uuid === action.item.yearUuid) {  //find the right year
+            //     return {
+            //         uuid: obj.uuid, 
+            //         year: obj.year, 
+            //         categories: obj.categories.map((cat) => {  //find the right category
+            //             if (cat.uuid === action.item.categoryUuid) {
+            //                 return {
+            //                     yearUuid: cat.yearUuid, 
+            //                     uuid: cat.uuid, 
+            //                     category: cat.category,
+            //                     items: [...cat.items, {text: "did this work?", uuid: action.item.uuid}]
+            //                 }
+            //             }
+            //             return cat
+            //         })
+            //     }
+            // }
             return obj;
         })
 

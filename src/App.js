@@ -16,7 +16,7 @@ function App() {
     if (years === undefined) {
         return []
     }
-    console.log("yearsData:", years)
+    // console.log("yearsData:", years)
     return years
 })
 
