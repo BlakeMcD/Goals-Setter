@@ -4,40 +4,18 @@ const yearReducer = (state = [], action) => {
         case 'ADD_YEAR':
             return [...state, action.item];
 
-        case 'ADD_YEAR_CATEGORY': 
+        case 'ADD_YEAR_CATEGORY':
+            console.log("AddYearCategory Action:", action.item) 
             return state.map(obj => {
                 if (obj.uuid  === action.item.yearUuid) {  //find the right year
 
-                    if (obj.categories.length === 0) {  //there are no categories this array
-                        return {
-                            uuid: obj.uuid, 
-                            year: obj.year,
-                            categories: [
-                                {
-                                    yearUuid: action.item.yearUuid,
-                                    uuid: action.item.uuid, 
-                                    category: action.item.category, 
-                                    items: []
-                                }
-                            ]
-                        }
-                    }
+                    console.log("...obj.categories before if:", ...obj.categories)
 
-                    //case - there are already categories in this array
                     return {
                         uuid: obj.uuid, 
                         year: obj.year,
-                        categories: [
-                            ...obj.categories, 
-                            {
-                                yearUuid: action.item.yearUuid,
-                                uuid: action.item.uuid, 
-                                category: action.item.category, 
-                                items: []
-                            }
-                        ]
+                        categories: [...obj.categories, {uuid: action.item.uuid, category: action.item.category, items: []}]
                     }
-                    
                 }
                 return obj;
             })

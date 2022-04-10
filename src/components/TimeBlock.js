@@ -51,7 +51,7 @@ function TimeBlock(props) {
         <p>And my uuid is: {props.yearUuid}</p>
         {displayTimeCategories()}
         <button onClick={() => addCategoryCard()}>Add Category Card</button>
-    </div>
+    </div> 
   )
 }
 
