@@ -5,25 +5,43 @@ const yearReducer = (state = [], action) => {
             return [...state, action.item];
 
         case 'ADD_YEAR_CATEGORY':
-            console.log("1 DISPATCH RECEIVED")
-            console.log("2 yearUuid:", action.item.yearUuid)
-            console.log("3 uuid:", action.item.uuid)
-            console.log("4 category:", action.item.category)
-            return state.map(obj => {
-                console.log("5 the object that is mapped:", obj)
-                console.log("6 ...obj.categories:", [...obj.categories])
-                if (obj.uuid === action.item.yearUuid) {  //find the right year
+            // console.log("1 DISPATCH RECEIVED")
+            // console.log("2 yearUuid:", action.item.yearUuid)
+            // console.log("3 uuid:", action.item.uuid)
+            // console.log("4 category:", action.item.category)
 
-                    return {
+            const stateClone = [...state]
+
+            const year = stateClone.find((y) => y.uuid === action.item.yearUuid);
+
+            console.log("year:", year)
+
+            year.categories = [
+                ...year.categories, 
+                action.item
+            ]
+
+            return stateClone;
+
+
+            return state.map(obj => {
+                // console.log("5 the object that is mapped:", obj)
+                
+                if (obj.uuid === action.item.yearUuid) {  //find the right year
+                    console.log("6 ...obj.categories:", [...obj.categories])
+                    let albertObject = {
                         ...obj,
                         categories: [
                             ...obj.categories, 
                             action.item
                         ]
                     };
+                    console.log(albertObject.categories)
+                    return albertObject
                 }
                 return obj;
             })
+            // return [...state, ]
         
         case 'ADD_YEAR_CATEGORY_ITEM': 
         return state.map(obj => {

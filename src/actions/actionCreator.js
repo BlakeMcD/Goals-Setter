@@ -8,6 +8,7 @@ export const addYear = (payload) => {
 };
 
 export const addYearCategory = (payload) => {
+    console.log("payload:", payload)
     return {
         type: "ADD_YEAR_CATEGORY", 
         item: payload
